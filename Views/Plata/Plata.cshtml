@@ -1,0 +1,87 @@
+﻿@model IstoricPlataDetailViewModel
+
+@{ ViewBag.Title = "Plata";}
+@{ Layout = null;}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+<div class="row">
+    <div class="col-md-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <div class="container-fluid d-flex justify-content-between">
+                    <div class="col-md-3">
+                        <p class="mt-5 mb-2"><b>ELECTROALFA</b></p>
+                        <p> Calea Națională 15<br />Botoșani<br />România</p>
+                    </div>
+
+                    <div class="col-md-3 pr-0">
+                        <p class="mt-5 mb-2 text-right"><b>Data platii: @Model.ZiPlata.ToString("dd/MM/yyyy")</b></p>
+                        <p class="text-right">Anul de taxa: @Model.An<br /><br />Luna:@Model.LunaPlata</p>
+                    </div>
+                </div>
+                <br /><br />
+
+                <div class="col-md-12 row">
+                    <div class="col-md-8"><h5>Numele angajatului: @Model.Nume</h5></div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 table-responsive-md">
+                    <table class="table table-striped">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Venituri</th>
+                                <th>Ore</th>
+                                <th>Rata</th>
+                                <th>Suma</th>
+                                <th>Taxe</th>
+                                <th>Suma</th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>Program normal: </b></td>
+                                <td>@Model.OreContract.ToString("f")</td>
+                                <td>@Model.RataOra.ToString("C")</td>
+                                <td>@Model.SalariuContractual.ToString("C")</td>
+                                <td>Taxe:</td>
+                                <td>@Model.TaxeSalariale.ToString("C")</td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Peste program: </b></td>
+                                <td>@Model.OreExtra.ToString("f")</td>
+                                <td>@Model.RataOra.ToString("C")</td>
+                                <td>@Model.PlataExtra.ToString("C")</td>
+                                <td>Taxe:</td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Total:</b></td>
+                                <td>@Model.OreLucrate.ToString("f")</td>
+                                <td>@Model.RataOra.ToString("C")</td>
+                                <td>@Model.CastiguriTotale.ToString("C")</td>
+                                <td>Taxe:</td>
+                                <td>@Model.TotalTaxe.ToString("C")</td>
+                            </tr>
+                            
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="table-dark"><b>Salariu net:</b></td>
+                                <td> @Model.PlataNeta.ToString("C")</td>
+                            </tr>
+
+                    </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

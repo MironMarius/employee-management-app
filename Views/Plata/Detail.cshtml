@@ -1,0 +1,184 @@
+﻿@model IstoricPlataDetailViewModel
+@{ViewBag.Title = "Detalii plata";}
+
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Acasa</a></li>
+                    <li class="breadcrumb-item"><a asp-action="Index">Lista plati</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Detalii despre plata</li>
+
+                </ol>
+            </nav><br /><br />
+                        <form>
+                            <div class="form-row">
+
+                                <div class="form-group col-md-2 font-weight-bold">
+                                    <label asp-for="Nume"></label>
+                                </div>
+                                <div class="form-group col-md-4 font-italic font-weight-bolder">
+                                    <input asp-for="Nume" class="form-control" readonly style="background-color: #293043" />
+                                </div>
+                                <div class="form-group col-md-2">
+
+                                </div>
+
+                            </div><br /><br />
+                            <h3>Informatii despre plata</h3>
+                            <hr style="background-color: crimson" />
+                            <div class="form-row">
+
+                                <div class="form-group col-md-1 ">
+                                    <label asp-for="LunaPlata"></label>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <input asp-for="LunaPlata" class="form-control" readonly style="background-color: #293043" />
+                                </div>
+
+                                <div class="form-group col-md-1 ">
+                                    <label asp-for="An"></label>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <input asp-for="An" class="form-control" readonly style="background-color: #293043" />
+                                </div>
+
+                                <div class="form-group col-md-1 ">
+                                    <label asp-for="ZiPlata"></label>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <input asp-for="ZiPlata" class="form-control" readonly style="background-color: #293043" />
+                                </div>
+
+                            </div>
+
+                            <div class="form-row">
+
+                                <div class="form-group col-md-1 ">
+                                    <label asp-for="RataOra"></label>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <input asp-for="RataOra" class="form-control" readonly style="background-color: #293043" />
+                                </div>
+
+                                <div class="form-group col-md-1 ">
+                                    <label asp-for="OreLucrate"></label>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <input asp-for="OreLucrate" class="form-control" readonly style="background-color: #293043" />
+                                </div>
+
+                                <div class="form-group col-md-1 ">
+                                    <label asp-for="OreContract"></label>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <input asp-for="OreContract" class="form-control" readonly style="background-color: #293043" />
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+
+
+
+
+                                <div class="form-group col-md-1 ">
+                                    <label asp-for="RataOraExtra"></label>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <input asp-for="RataOraExtra" class="form-control" readonly style="background-color: #293043" />
+                                </div>
+
+                                <div class="form-group col-md-1 ">
+                                    <label asp-for="OreExtra"></label>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <input asp-for="OreExtra" class="form-control" readonly style="background-color: #293043" />
+                                </div>
+
+                                <div class="form-group col-md-1 ">
+                                    <label asp-for="Functie"></label>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <input asp-for="Functie" class="form-control" readonly style="background-color: #293043" />
+                                </div>
+
+
+                            </div><br /><br />
+
+                            <h3>Taxe</h3>
+                            <hr style="background-color: crimson" />
+
+                            <div class="form-row">
+
+                                <div class="form-group col-md-1 ">
+                                    <label asp-for="TaxeSalariale"></label>
+                                </div>
+                                <div class="form-group col-md-3 font-weight-bold">
+                                    <input asp-for="TaxeSalariale" class="form-control" readonly style="background-color: #293043" />
+                                </div>
+                            <div class="form-group col-md-4">
+
+
+                            </div>
+
+                                <div class="form-group col-md-1 font-weight-bolder ">
+                                    <label asp-for="TotalTaxe"></label>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <input asp-for="TotalTaxe" class="form-control" readonly style="background-color: #293043" />
+                                </div>
+
+                            </div><br /><br />
+
+                            <h3>Salariu</h3>
+                            <hr style="background-color: crimson" />
+
+                            <div class="form-row">
+
+
+                                <div class="form-group col-md-1 ">
+                                    <label asp-for="SalariuContractual"></label>
+                                </div>
+                                <div class="form-group col-md-3 font-weight-bold">
+                                    <input asp-for="SalariuContractual" class="form-control" readonly style="background-color: #293043" />
+                                </div>
+
+                                <div class="form-group col-md-1 ">
+                                    <label asp-for="PlataExtra"></label>
+                                </div>
+                                <div class="form-group col-md-3 font-weight-bold">
+                                    <input asp-for="PlataExtra" class="form-control" readonly style="background-color: #293043" />
+                                </div>
+
+                                <div class="form-group col-md-1 ">
+                                    <label asp-for="CastiguriTotale"></label>
+                                </div>
+                                <div class="form-group col-md-3 font-weight-bold">
+                                    <input asp-for="CastiguriTotale" class="form-control" readonly style="background-color: #293043" />
+                                </div>
+
+
+
+                            </div>
+
+
+
+                            <div class="form-row">
+                                 
+                                <div class="form-group col-md-8">
+
+                                </div>
+
+                                <div class="form-group col-md-1 ">
+                                    <label asp-for="PlataNeta"></label>
+                                </div>
+                                <div class="form-group col-md-3 font-weight-bold">
+                                    <input asp-for="PlataNeta" class="form-control" readonly style="background-color: #293043" />
+                                </div>
+                            </div>
+
+                        </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TeoLic</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css "/>
+</head>
+<body>
+
+    <div class="container-scroller">
+        <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+                 <a class="navbar-brand brand-logo"><img src="~/imagini/electroalfa_logo.png" alt="logo"/></a>
+            
+             </div>
+            <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+                <partial name="_LoginPartial"/>
+            </div>
+
+        </nav>
+
+    <div class="container-fluid page-body-wrapper ">
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#Angajat" aria-expanded="false" aria-controls="ui-basic">
+                        <i class="fas fa-users fa-lg text-primary" style="margin-right: 0.7em"></i>
+                        <span class="menu-title"  >Angajat</span>
+                        <i class="menu-arrow text-primary"></i>
+                    </a>
+                    <div class="collapse" id="Angajat">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" asp-controller="Angajati" asp-action="Create">Angajat nou</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Angajati" asp-action="Index">Toti angajatii</a></li>
+                        </ul="nav>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#Plata" aria-expanded="false" aria-controls="ui-basic">
+                        <i class="fas fa-euro-sign fa-lg text-primary" style="margin-right: 0.7em"></i>
+                        <span class="menu-title"  >Plata</span>
+                        <i class="menu-arrow text-primary"></i>
+                    </a>
+                    <div class="collapse" id="Plata">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" asp-controller="Plata" asp-action="Create">Plata noua</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Plata" asp-action="Index">Istoric plati</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+
+        </nav>
+        <div class="main-panel">
+            <partial name="_CookieConsentPartial"/>
+            <div class="content-wrapper">
+                @RenderBody()
+            </div>
+            <footer class="footer">
+                <p>&copy @DateTime.UtcNow.Year - Licenta - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></p>
+            </footer>
+        </div>
+    </div>
+    </div>
+    
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

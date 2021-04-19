@@ -1,0 +1,71 @@
+﻿@model IEnumerable<IstoricPlataIndexViewModel>
+
+@{ViewBag.Title = "Istoric plati";}
+
+<div class="row">
+    <div class="col-md-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Acasa</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Istoricul platilor</li>
+
+                    </ol><br /><br />
+                    <div class="row">
+                        <div class="col-md-12 table-responsive-md">
+                            <a class="btn btn-outline-success float-md-right" asp-action="Create"> Plata noua </a>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Angajat</th>
+                                        <th>Data platii</th>
+                                        <th>Luna platii</th>
+                                        <th>Anul de taxa</th>
+                                        <th>Total venituri</th>
+                                        <th>Total taxe</th>
+                                        <th>Plata neta</th>
+                                        <th class="text-warning">Actiuni</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <a asp-action="Detail" asp-route-id="@item.Id">
+                                                    @item.Nume
+                                                </a>
+                                            </td>
+                                            <td>
+                                                @item.DataPlatii.ToString("dd/MM/yyyy")
+                                            </td>
+                                            <td>@item.LunaPlatii</td>
+                                            <td>@item.IdAnTaxa</td>
+                                            <td>@item.CastiguriTotale.ToString("C")</td>
+                                            <td>@item.TaxeTotale.ToString("C")</td>
+                                            <td>@item.PlataNeta.ToString("C")</td>
+                                                
+
+                                            <td>
+                                                <a class="text-success" asp-action="Plata" asp-route-id="@item.Id">
+                                                    <i class="fas fa-info-square"></i>Detalii plata
+
+                                                </a>
+                                                <a class="text-danger" asp-action="GenereazaPlataPdf" asp-route-id="@item.Id">
+                                                    <i class="fas fa-file-pdf"></i> PDF Plata
+                                                </a>
+                                                </td>
+                                        </tr>
+                                    }
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

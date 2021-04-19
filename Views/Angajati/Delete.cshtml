@@ -1,0 +1,33 @@
+﻿@model AngajatDeleteViewModel
+
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Acasa</a></li>
+                    <li class="breadcrumb-item"><a asp-action="Index">Lista Angajati</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Stergere angajat</li>
+
+                </ol>
+            </nav><br /><br />
+            <h2 style="color:red"> Sigur doriti sa stergeti acest angajat?</h2>
+            <form method="post" enctype="multipart/form-data" asp-action="Delete">
+               
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-rounded btn-primary float-left"><i class="fas fa-user-minus" style="margin-right:0.7em"></i>Stergeti</button>
+                    <a asp-action="index" class="btn btn-rounded btn-success float-right"><i class="fas fa-backward" style="margin-right:0.7em"></i>Inapoi</a>
+                    <br />
+                    <br />
+                    <br />
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

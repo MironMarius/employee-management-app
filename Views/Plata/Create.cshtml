@@ -1,0 +1,122 @@
+﻿@model IstoricPlataCreateViewModel
+
+@{ViewBag.Title = "Plata noua";}
+
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Acasa</a></li>
+                    <li class="breadcrumb-item"><a asp-action="Index">Lista plati</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Plata noua</li>
+
+                </ol>
+            </nav><br /><br />
+                        <form method="post" enctype="multipart/form-data" asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="IdAngajat"></label>
+                                <select asp-for="IdAngajat" class="form-control" asp-items="ViewBag.angajati">
+                                    <option selected>--- Selectati angajat ---</option>
+                                </select>
+                                <span asp-validation-for="IdAngajat" class="text-danger"></span>
+                            </div><br /><br /><br />
+                            <div class="form-row">
+                                <div class="form-group col-md-1">
+                                    <label asp-for="LunaPlata"></label>
+                                </div>
+                                <div class="form=group col-md-3">
+                                    <select asp-for="LunaPlata" class="form-control">
+                                        <option selected>--- Selectati luna ---</option>
+                                        <option>Ianuarie</option>
+                                        <option>Februarie</option>
+                                        <option>Martie</option>
+                                        <option>Aprilie</option>
+                                        <option>Mai</option>
+                                        <option>Iunie</option>
+                                        <option>Iulie</option>
+                                        <option>August</option>
+                                        <option>Septembrie</option>
+                                        <option>Octombrie</option>
+                                        <option>Noiembrie</option>
+                                        <option>Decembrie</option>
+                                    </select>
+                                    <span asp-validation-for="LunaPlata" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-md-1">
+                                    <label asp-for="IdAnTaxa"></label>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <select asp-for="IdAnTaxa" class="form-control" asp-items="ViewBag.aniTaxa">
+                                        <option selected>--- Selectati anul ---</option>
+                                    </select>
+                                    <span asp-validation-for="IdAnTaxa" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-md-1">
+                                    <label asp-for="ZiPlata"></label>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <input asp-for="ZiPlata" class="form-control" />
+                                    <span asp-validation-for="ZiPlata"></span>
+                                </div>
+                                </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-1">
+                                    <label asp-for="RataOra"></label>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <input asp-for="RataOra" class="form-control" placeholder="0.00" />
+                                    <span asp-validation-for="RataOra"></span>
+                                </div>
+                                <div class="form-group col-md-1">
+                                    <label asp-for="OreLucrate"></label>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <input asp-for="OreLucrate" class="form-control" placeholder="0.00" />
+                                    <span asp-validation-for="OreLucrate"></span>
+                                </div>
+                                <div class="form-group col-md-1">
+                                    <label asp-for="OreContract"></label>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <input asp-for="OreContract" class="form-control" placeholder="0.00" />
+                                    <span asp-validation-for="OreContract"></span>
+                                </div>  
+
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group col-md-1">
+                                    <label asp-for="Functie"></label>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <input asp-for="Functie" class="form-control" />
+                                    <span asp-validation-for="Functie"></span>
+                                </div>
+
+                                </div>
+
+                            
+                            
+                            
+                            
+                            <br/><br/><br/>
+
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-rounded btn-primary float-left"><i class="far fa-save" style="margin-right:0.7em"></i>Salvati</button>
+                    <a asp-action="index" class="btn btn-rounded btn-success float-right"><i class="fas fa-backward" style="margin-right:0.7em"></i>Inapoi la lista platilor</a>
+                    <br />
+                    <br />
+                    <br />
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
