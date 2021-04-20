@@ -23,7 +23,7 @@ namespace Licenta.Controllers
              
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? numarPagini)
         {
 
             var angajati = _serviciiAngajati.GetAll().Select(angajat => new AngajatIndexViewModel
@@ -37,8 +37,9 @@ namespace Licenta.Controllers
                 ZiAngajare=angajat.ZiAngajare,
                 Oras=angajat.Oras
             }
-            ).ToList() ; 
-            return View(angajati);
+            ).ToList() ;
+            int paginaSize = 4;
+            return View(PaginiListaAngajati<AngajatIndexViewModel>.Create(angajati, numarPagini ?? 1, paginaSize));
         }
         [HttpGet]
         public IActionResult Create()
@@ -216,6 +217,7 @@ namespace Licenta.Controllers
             await _serviciiAngajati.Delete(model.Id);
             return RedirectToAction(nameof(Index));
         }
+
 
     }
 }

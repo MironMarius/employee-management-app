@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Licenta.Models.AngajatIndexViewModel>
+﻿@model PaginiListaAngajati<Licenta.Models.AngajatIndexViewModel>
 
 @{ ViewBag.Title = "Angajati";}
 
@@ -29,16 +29,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var item in Model) 
+                                    @foreach (var item in Model)
                                     {
                                         <tr>
                                             <td>
                                                 <a asp-action="Detail" asp-route-id="@item.Id">
-                                                @item.NrAngajat
+                                                    @item.NrAngajat
                                                 </a>
                                             </td>
                                             <td>
-                                                <img alt="image" src="@Url.Content(item.ImgUrl)"/>
+                                                <img alt="image" src="@Url.Content(item.ImgUrl)" />
                                             </td>
                                             <td>@item.Nume</td>
                                             <td>@item.Sex</td>
@@ -51,7 +51,7 @@
                                                 </a>
                                                 <a class="text-success" asp-action="Detail" asp-route-id="@item.Id">
                                                     <i class="fas fa-info-square"></i>Detalii
-                                                    
+
                                                 </a>
                                                 <a class="text-danger" asp-action="Delete" asp-route-id="@item.Id">
                                                     <i class="fas fa-user-minus"></i>Sterge
@@ -59,11 +59,27 @@
                                             </td>
 
                                         </tr>
-                                      }
-            
-         
+                                    }
+
+
                                 </tbody>
-                            </table>
+                            </table><br />
+                            @{
+                                var disablePaginaAnterioara = !Model.ExistaPaginaAnterioara ? "disabled" : " ";
+                                var disablePaginaUrmatoare = !Model.ExistaPaginaUrmatoare ? "disabled" : " ";
+                            }
+
+                            <a asp-action="Index"
+                               asp-route-numarPagini="@(Model.PaginaIndex - 1)"
+                               class="btn btn-primary @disablePaginaAnterioara">
+                                Pagina anterioara
+                            </a>
+
+                            <a asp-action="Index"
+                               asp-route-numarPagini="@(Model.PaginaIndex + 1)"
+                               class="btn btn-primary @disablePaginaUrmatoare">
+                                Pagina urmatoare
+                            </a>
                         </div>
                     </div>
                 </nav>
