@@ -1,6 +1,7 @@
 ﻿using Licenta.Entitate;
 using Licenta.Models;
 using Licenta.Servicii;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RotativaCore;
 using System;
@@ -9,7 +10,10 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Licenta.Controllers
+
 {
+    [Authorize(Roles="Admin, Manager")]
+    
     public class PlataController : Controller
     {
         private readonly IntServiciiPlata _serviciiPlata;
@@ -50,7 +54,7 @@ namespace Licenta.Controllers
 
         }
 
-
+        [Authorize(Roles ="Admin")]
         public IActionResult Create()
         {
             ViewBag.angajati = _serviciiAngajati.GetAllAngajatiForPlata();
@@ -61,6 +65,7 @@ namespace Licenta.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create(IstoricPlataCreateViewModel model)
         {
 
@@ -129,6 +134,7 @@ namespace Licenta.Controllers
             return View(model);
         }
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Plata(int id)
         {
 

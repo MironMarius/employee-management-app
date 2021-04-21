@@ -21,7 +21,6 @@
                                         <th>Angajat</th>
                                         <th>Data platii</th>
                                         <th>Luna platii</th>
-                                        <th>Anul de taxa</th>
                                         <th>Total venituri</th>
                                         <th>Total taxe</th>
                                         <th>Plata neta</th>
@@ -41,7 +40,6 @@
                                                 @item.DataPlatii.ToString("dd/MM/yyyy")
                                             </td>
                                             <td>@item.LunaPlatii</td>
-                                            <td>@item.IdAnTaxa</td>
                                             <td>@item.CastiguriTotale.ToString("C")</td>
                                             <td>@item.TaxeTotale.ToString("C")</td>
                                             <td>@item.PlataNeta.ToString("C")</td>
@@ -49,11 +47,12 @@
 
                                             <td>
                                                 <a class="text-success" asp-action="Plata" asp-route-id="@item.Id">
-                                                    <i class="fas fa-info-square"></i>Detalii plata
+                                                    <i class="fas fa-info-square"></i>Detalii plata   
 
                                                 </a>
+                                                <br /><br />
                                                 <a class="text-danger" asp-action="GenereazaPlataPdf" asp-route-id="@item.Id">
-                                                    <i class="fas fa-file-pdf"></i> PDF Plata
+                                                    <i class="fas fa-file-pdf"></i>PDF Plata
                                                 </a>
                                                 </td>
                                         </tr>

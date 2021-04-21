@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using Licenta.Entitate;
 using Licenta.Models;
 using Licenta.Servicii;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting.Internal;
 
 namespace Licenta.Controllers
 {
+    [Authorize]
     public class AngajatiController : Controller
     {
         private readonly IntServiciiAngajati _serviciiAngajati;
@@ -42,6 +44,7 @@ namespace Licenta.Controllers
             return View(PaginiListaAngajati<AngajatIndexViewModel>.Create(angajati, numarPagini ?? 1, paginaSize));
         }
         [HttpGet]
+        [Authorize(Roles = "Admin, Manager")]
         public IActionResult Create()
         {
 
@@ -51,6 +54,7 @@ namespace Licenta.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Manager")]
         public async Task<IActionResult> Create(AngajatCreateViewModel model)
         {
             if(ModelState.IsValid)
@@ -92,7 +96,7 @@ namespace Licenta.Controllers
                 
         }
 
-        
+        [Authorize(Roles = "Admin, Manager")]
         public IActionResult Edit(int id)
         {
             var angajat  = _serviciiAngajati.GetById(id);
@@ -122,6 +126,7 @@ namespace Licenta.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Manager")]
         public async Task<IActionResult> Edit(AngajatEditViewModel model)
         {
             if (ModelState.IsValid)
@@ -166,6 +171,7 @@ namespace Licenta.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin, Manager")]
         public IActionResult Detail(int id)
         {
 
@@ -195,6 +201,7 @@ namespace Licenta.Controllers
            
         }
         [HttpGet]
+        [Authorize(Roles = "Admin, Manager")]
         public IActionResult Delete(int id)
         {
             var angajat = _serviciiAngajati.GetById(id);
@@ -212,6 +219,7 @@ namespace Licenta.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Manager")]
         public async Task <IActionResult> Delete(AngajatDeleteViewModel model)
         {
             await _serviciiAngajati.Delete(model.Id);
